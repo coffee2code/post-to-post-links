@@ -13,7 +13,7 @@ or by the post slug/name, like so:
 
 The HTML comment notation was the original syntax employed by earlier versions of this plugin.  While it is still supported, it is no longer the primary and recommended syntax.  Instead, use the square-bracket notation.  However, you can enable legacy tag support by checking the appropriate option on the plugin's admin options page.
 
-A quicktag button labeled "post link" is created by default, which will automatically insert <!--post=""--> into the post
+A quicktag button labeled "post link" is created by default, which will automatically insert [post=""] into the post/page
 textarea.  Insert the ID/post slug between the double-quotes.
 
 The plugin provides its own admin options page via `Options` -> `Post2Post` in the WordPress admin.
@@ -61,8 +61,11 @@ class PostToPostLinks {
 	var $show_admin = true;	// Change this to false if you don't want the plugin's admin page shown.
 	var $config = array();
 	var $options = array(); // Don't use this directly
+	var $folder = 'wp-content/plugins/post-to-post-links/';
+	var $fullfolderurl;
 
 	function PostToPostLinks() {
+		$this->fullfolderurl = get_bloginfo('wpurl') . '/' . $this->folder;
 		$this->config = array(
 			// input can be 'checkbox', 'text', 'textarea', 'inline_textarea', 'hidden', or 'none'
 			// datatype can be 'array' or 'hash'
@@ -81,11 +84,13 @@ class PostToPostLinks {
 					'help' => 'Enable support for pre-2.0 post-to-post tag syntax of <code>&lt;!--post="24"--></code>?<br />
 							 Check this if you have used an older version of this plugin and thus used the older syntax.')
 		);
-
+		$options = $this->get_options();
 		add_action('admin_menu', array(&$this, 'admin_menu'));		
 		add_filter('the_content', array(&$this, 'post_to_post_link'), 9);
 		add_filter('the_content_rss', array(&$this, 'post_to_post_link'), 9);
 		add_filter('get_the_excerpt', array(&$this, 'post_to_post_link'), 9);
+		if ( $options['make_quicktag'] )
+				add_action('init', array(&$this, 'addbuttons'));
 	}
 
 	function install() {
@@ -96,6 +101,60 @@ class PostToPostLinks {
 	function admin_menu() {
 		if ( $this->show_admin )
 			add_options_page('Easy Post-to-Post Links', 'Post2Post', 9, basename(__FILE__), array(&$this, 'options_page'));
+	}
+
+    function addbuttons() {
+    	global $wp_db_version;
+        if ( !current_user_can('edit_posts') && !current_user_can('edit_pages') ) return;
+
+		if ( !get_user_option( 'rich_editing' ) || !user_can_richedit() )
+			add_filter('admin_footer', array(&$this, 'add_postlink_button'));
+       	else {
+			// Load and append TinyMCE external plugins
+			add_filter('mce_plugins', array(&$this, 'mce_plugins'));
+			add_filter('mce_buttons', array(&$this, 'mce_buttons'));
+			add_action('tinymce_before_init', array(&$this, 'tinymce_before_init'));
+		}
+	}
+	
+	function mce_plugins($plugins) {
+		array_push($plugins, '-posttopostlinks');
+		return $plugins;
+	}
+	function mce_buttons($buttons) {
+		array_push($buttons, 'separator', 'posttopostlinks');
+		return $buttons;
+	}
+	function tinymce_before_init() {
+		echo 'tinyMCE.loadPlugin("posttopostlinks", "' . $this->fullfolderurl . "tinymce/\");\n";
+	}
+
+	function add_postlink_button() {
+		if ( in_array(basename($_SERVER['SCRIPT_NAME']), array('post-new.php', 'page-new.php', 'post.php', 'page.php')) ) {
+			echo <<<HTML
+		<script language="JavaScript" type="text/javascript"><!--
+		function js_c2c_add_postlink_button () {
+			var edspell = document.getElementById("ed_spell");
+			if (edspell == null) return;
+			var edpostlink = document.getElementById("ed_postlink");
+			if (edpostlink != null) return;
+			edButtons[edButtons.length] =
+			new edButton('ed_postlink'
+			,'post link'
+			,'[post=""]'
+			,''
+			,''
+			);
+			n = edButtons.length - 1;
+			edShowButton(edButtons[n], n);
+			var newbutton = document.getElementById(edButtons[n].id);
+			edspell.parentNode.insertBefore(newbutton, edspell);
+			return;
+		}        
+		js_c2c_add_postlink_button();
+		//--></script>
+HTML;
+		}
 	}
 
 	function get_options() {
