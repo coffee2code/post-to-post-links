@@ -4,7 +4,21 @@ Plugin Name: Easy Post-to-Post Links
 Version: 2.0
 Author: Scott Reilly
 Author URI: http://www.coffee2code.com
-Description: Easily reference another post in your blog using a shortcut, either by id or post slug.  The shortcut is replaced with the hyperlinked title of the referenced post.
+Description: Easily create a link to another post using a simple shortcut and using the post's id or slug; the link text is the post's title, unless overridden.
+
+When writing your posts, you can refer to other posts either by ID, like so: 
+	[post="20"] or <!--post="20"-->	
+or by the post slug/name, like so:
+	[post="hello-world"] or <!--post="hello-world"-->.
+
+The HTML comment notation was the original syntax employed by earlier versions of this plugin.  While it is still supported, it is no longer the primary and recommended syntax.  Instead, use the square-bracket notation.  However, you can enable legacy tag support by checking the appropriate option on the plugin's admin options page.
+
+A quicktag button labeled "post link" is created by default, which will automatically insert <!--post=""--> into the post
+textarea.  Insert the ID/post slug between the double-quotes.
+
+The plugin provides its own admin options page via `Options` -> `Post2Post` in the WordPress admin.
+
+NOTE: The HTML comment syntax notation does NOT play well with the visual (aka rich-text) editor in the WordPress admin.  
 
 Compatible with WordPress 2.2+, and 2.3+.
 
@@ -139,8 +153,11 @@ class PostToPostLinks {
 		echo <<<END
 		<div class='wrap'>
 			<h2>Post-to-Post Links Plugin Options</h2>
-			<p>Easily reference another post in your blog using a shortcut, either by id or post slug.  The shortcut is replaced with the hyperlinked title of the referenced post.</p>
+			<p>Easily create a link to another post using a simple shortcut and using the post's id or slug; the link text is the post's title, unless overridden.</p>
+
+			<p>See the <a href="#examples" title="Examples">Examples</a> section for example usage.</p>
 			
+			<p><em>NOTE: The HTML comment notation (aka legacy tag) does NOT play well with the visual (aka rich-text) editor in the WordPress admin.</em></p>
 			<form name="post_to_post_links" action="$action_url" method="post">	
 END;
 				wp_nonce_field($this->nonce_field);
@@ -197,6 +214,40 @@ END;
 END;
 		echo <<<END
 		<div class='wrap' style="text-align:center; color:#888;">This plugin brought to you by <a href="http://coffee2code.com" title="coffee2code.com">Scott Reilly, aka coffee2code</a>.<br /><span style="font-size:x-small;"><a href="http://coffee2code.com/donate">Did you find this plugin useful?</a></span></div>
+END;
+		echo <<<END
+		<div class='wrap'>
+		<h2>Examples</h2>
+		<a name="example"></a>These are all valid ways to reference another of your posts on the same blog.  Those that use HTML comment notation (i.e. <code>&lt;!-- post="XX" --></code>) only work if you've enabled legacy tag support.
+	
+		<ul>
+		<li><code>[post=25]</code></li>
+		<li><code>[post="25"]</code></li>
+		<li><code>[post = "25"]</code></li>
+		<li><code>[post='25']</code></li>
+		<li><code>[post = '25']</code></li>
+		<li><code>[post="the-best-post-ever"]</code></li>
+		<li><code>[post = "the-best-post-ever"]</code></li>
+		<li><code>[post='the-best-post-ever']</code></li>
+		<li><code>[post = 'the-best-post-ever']</code></li>
+		<li><code>&lt;!--post=25--></code></li>
+		<li><code>&lt;!-- post = 25 --></code></li>
+		<li><code>&lt;!--post="25"--></code></li>
+		<li><code>&lt;!--post = "25" --></code></li>
+		<li><code>&lt;!-- post='25'--></code></li>
+		<li><code>&lt;!-- post = '25' --></code></li>
+		</ul>
+
+		For any of the above you can also optionally specify a <code>text=""</code> value.  If so defined, that text will be used as the link text as opposed to the referenced post's title.
+
+		<ul>
+		<li><code>[post="25" text="this post"]</li>
+		<li><code>[post="blog-anniversary" text="Congratulate me!"]</li>
+		<li><code>&lt;!--post="25" text="this post"--></li>
+		<li><code>&lt;!--post='hello-world' text='this post'--></li>
+		</ul>
+		
+		</div>
 END;
 	}
 
