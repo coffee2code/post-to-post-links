@@ -107,7 +107,7 @@ class PostToPostLinks {
 			check_admin_referer($this->nonce_field);
 
 			foreach (array_keys($options) AS $opt) {
-				$options[$opt] = $_POST[$opt];
+				$options[$opt] = stripslashes($_POST[$opt]);
 				$input = $this->config[$opt]['input'];
 				if (($input == 'checkbox') && !$options[$opt])
 					$options[$opt] = 0;
@@ -149,7 +149,7 @@ END;
 					$input = $this->config[$opt]['input'];
 					if ($input == 'none') continue;
 					$label = $this->config[$opt]['label'];
-					$value = $options[$opt];
+					$value = htmlspecialchars($options[$opt]);
 					if ($input == 'checkbox') {
 						$checked = ($value == 1) ? 'checked=checked ' : '';
 						$value = 1;
@@ -205,6 +205,7 @@ END;
 		global $wpdb;
 		$options = $this->get_options();
 		$post_id_or_name = $wpdb->escape($matches[2]);
+		$title = $matches[4];
 		if ( empty($post_id_or_name) ) return '';
 //		$field = (is_numeric($post_id_or_name)) ? 'ID' : 'post_name';
 		if ( is_numeric($post_id_or_name) )
@@ -214,20 +215,20 @@ END;
 		if ( empty($post->post_title) ) return '';
 		return $options['before_text'] .
 			   '<a href="' . get_permalink($post->ID) . '">' .
-			   apply_filters('the_title', get_the_title($post->ID)) .
+			   ($title ? $title : apply_filters('the_title', get_the_title($post->ID))) .
 			   '</a>' . $options['after_text'];
 	} //end post_to_post_link_handler
 
 	function post_to_post_link( $text ) {
 		$options = $this->get_options();
 		$text = preg_replace_callback(
-			"#(\[post[ ]*=[ ]*['\"]?([^'\" ]+)['\"]?\])#imsU",
+			"#(\[post[ ]*=[ ]*['\"]?([^'\" ]+)['\"]?( text[ ]*=[ ]*['\"]([^'\"]+)['\"])?\])#imsU",
 			array(&$this, 'post_to_post_link_handler'),
 			$text
 		);
 		if ( $options['enable_legacy'] ) {
 			$text = preg_replace_callback(
-				"#(<!--[ ]*post[ ]*=[ ]*['\"]?([^'\" ]+)['\"]?[ ]*-->)#imsU",
+				"#(<!--[ ]*post[ ]*=[ ]*['\"]?([^'\" ]+)['\"]?[ ]*(text[ ]*=[ ]*['\"]([^'\"]+)['\"])?[ ]*-->)#imsU",
 				array(&$this, 'post_to_post_link_handler'),
 				$text
 			);
