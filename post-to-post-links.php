@@ -14,7 +14,8 @@ or by the post slug/name, like so:
 The HTML comment notation was the original syntax employed by earlier versions of this plugin.  While it is still supported, it is no longer the primary and recommended syntax.  Instead, use the square-bracket notation.  However, you can enable legacy tag support by checking the appropriate option on the plugin's admin options page.
 
 A quicktag button labeled "post link" is created by default, which will automatically insert [post=""] into the post/page
-textarea.  Insert the ID/post slug between the double-quotes.
+textarea.  Insert the ID/post slug between the double-quotes.  A visual editor button has also been added which does the same thing
+as well, which also adds the feature of treating highlighted text as the text="" value when the button is pressed.
 
 The plugin provides its own admin options page via `Options` -> `Post2Post` in the WordPress admin.
 
@@ -82,7 +83,7 @@ class PostToPostLinks {
 			'enable_legacy' => array('input' => 'checkbox', 'default' => false,
 					'label' => 'Enable legacy tag support?',
 					'help' => 'Enable support for pre-2.0 post-to-post tag syntax of <code>&lt;!--post="24"--></code>?<br />
-							 Check this if you have used an older version of this plugin and thus used the older syntax.')
+							 Check this if you have used an older version of this plugin and thus have the older syntax in existing posts.')
 		);
 		$options = $this->get_options();
 		add_action('admin_menu', array(&$this, 'admin_menu'));		
@@ -180,7 +181,7 @@ HTML;
 			check_admin_referer($this->nonce_field);
 
 			foreach (array_keys($options) AS $opt) {
-				$options[$opt] = stripslashes($_POST[$opt]);
+				$options[$opt] = htmlspecialchars(stripslashes($_POST[$opt]));
 				$input = $this->config[$opt]['input'];
 				if (($input == 'checkbox') && !$options[$opt])
 					$options[$opt] = 0;
@@ -225,7 +226,7 @@ END;
 					$input = $this->config[$opt]['input'];
 					if ($input == 'none') continue;
 					$label = $this->config[$opt]['label'];
-					$value = htmlspecialchars($options[$opt]);
+					$value = $options[$opt];
 					if ($input == 'checkbox') {
 						$checked = ($value == 1) ? 'checked=checked ' : '';
 						$value = 1;
