@@ -61,13 +61,17 @@ class PostToPostLinks {
 					'help' => 'Text to appear before title of a referenced post'),
 			'after_text' => array('input' => 'text', 'default' => '"',
 					'label' => 'After link text',
-					'help' => 'Text to appear after title of a referenced post')
+					'help' => 'Text to appear after title of a referenced post'),
+			'enable_legacy' => array('input' => 'checkbox', 'default' => false,
+					'label' => 'Enable legacy tag support?',
+					'help' => 'Enable support for pre-2.0 post-to-post tag syntax of <code>&lt;!--post="24"--></code>?<br />
+							 Check this if you have used an older version of this plugin and thus used the older syntax.')
 		);
 
 		add_action('admin_menu', array(&$this, 'admin_menu'));		
-		add_filter('the_content', array(&$this, 'post_to_post_link'), 10);
-		add_filter('the_content_rss', array(&$this, 'post_to_post_link'), 10);
-		add_filter('get_the_excerpt', array(&$this, 'post_to_post_link'), 10);
+		add_filter('the_content', array(&$this, 'post_to_post_link'), 9);
+		add_filter('the_content_rss', array(&$this, 'post_to_post_link'), 9);
+		add_filter('get_the_excerpt', array(&$this, 'post_to_post_link'), 9);
 	}
 
 	function install() {
@@ -215,11 +219,20 @@ END;
 	} //end post_to_post_link_handler
 
 	function post_to_post_link( $text ) {
-		return preg_replace_callback(
-			"#(<!--[ ]*post[ ]*=[ ]*['\"]?([^'\" ]+)['\"]?[ ]*-->)#imsU",
+		$options = $this->get_options();
+		$text = preg_replace_callback(
+			"#(\[post[ ]*=[ ]*['\"]?([^'\" ]+)['\"]?\])#imsU",
 			array(&$this, 'post_to_post_link_handler'),
 			$text
 		);
+		if ( $options['enable_legacy'] ) {
+			$text = preg_replace_callback(
+				"#(<!--[ ]*post[ ]*=[ ]*['\"]?([^'\" ]+)['\"]?[ ]*-->)#imsU",
+				array(&$this, 'post_to_post_link_handler'),
+				$text
+			);
+		}
+		return $text;
 	} //end post_to_post_links
 
 } // end PostToPostLinks
