@@ -72,8 +72,8 @@ class PostToPostLinks {
 			// datatype can be 'array' or 'hash'
 			// can also specify input_attributes
 			'make_quicktag' => array('input' => 'checkbox', 'default' => true,
-					'label' => 'Enable quicktag button?',
-					'help' => 'Add the quicktag button to the post editor toolbar?'),
+					'label' => 'Enable post editor button?',
+					'help' => 'Add button to the post editor toolbar?'),
 			'before_text' => array('input' => 'text', 'default' => '"',
 					'label' => 'Before link text',
 					'help' => 'Text to appear before title of a referenced post'),
