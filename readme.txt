@@ -30,7 +30,7 @@ NOTE: The HTML comment syntax notation does NOT play well with the visual (aka r
 
 1. Unzip `post-to-post-links.zip` inside the `/wp-content/plugins/` directory, or upload `post-to-post-links.php` to `/wp-content/plugins/`
 1. Activate the plugin through the 'Plugins' admin menu in WordPress
-1. Go to the new `Options` -> `Post2Post` admin options page.  Optionally customize the limits.
+1. Go to the new `Options` -> `Post2Post` admin options page.  Optionally customize the settings.
 1. Use the Post-to-Post link syntax in posts to refer to other posts, as needed. (See examples.)
 
 == Examples ==
