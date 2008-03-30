@@ -3,7 +3,7 @@ Contributors: coffee2code
 Donate link: http://coffee2code.com
 Tags: posts, links
 Requires at least: 2.0.2
-Tested up to: 2.3.2
+Tested up to: 2.5
 Stable tag: trunk
 Version: 2.0
 

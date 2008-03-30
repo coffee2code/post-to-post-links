@@ -2,8 +2,9 @@
 /*
 Plugin Name: Easy Post-to-Post Links
 Version: 2.0
+Plugin URI: http://coffee2code.com/wp-plugins/post-to-post-links
 Author: Scott Reilly
-Author URI: http://www.coffee2code.com
+Author URI: http://coffee2code.com
 Description: Easily create a link to another post using a simple shortcut and using the post's id or slug; the link text is the post's title, unless overridden.
 
 When writing your posts, you can refer to other posts either by ID, like so: 
@@ -21,18 +22,15 @@ The plugin provides its own admin options page via `Options` -> `Post2Post` in t
 
 NOTE: The HTML comment syntax notation does NOT play well with the visual (aka rich-text) editor in the WordPress admin.  
 
-Compatible with WordPress 2.2+, and 2.3+.
+Compatible with WordPress 2.2+, 2.3+, and 2.5.
 
 =>> Read the accompanying readme.txt file for more information.  Also, visit the plugin's homepage
 =>> for more information and the latest updates
 
 Installation:
 
-1. Download the file http://www.coffee2code.com/wp-plugins/post-to-post-links.zip and unzip it into your 
+1. Download the file http://coffee2code.com/wp-plugins/post-to-post-links.zip and unzip it into your 
 /wp-content/plugins/ directory.
--OR-
-Copy and paste the the code ( http://www.coffee2code.com/wp-plugins/post-to-post-links.phps ) into a file called 
-post-to-post-links.php, and put that file into your /wp-content/plugins/ directory.
 2. Activate the plugin through the 'Plugins' admin menu in WordPress
 3. Go to the new Options -> Post2Post admin options page.  Optionally customize the options.
 
@@ -221,7 +219,7 @@ HTML;
 			<form name="post_to_post_links" action="$action_url" method="post">	
 END;
 				wp_nonce_field($this->nonce_field);
-		echo '<fieldset class="option"><table width="100%" cellspacing="2" cellpadding="5" class="optiontable editform">';
+		echo '<table width="100%" cellspacing="2" cellpadding="5" class="optiontable editform form-table">';
 				foreach (array_keys($options) as $opt) {
 					$input = $this->config[$opt]['input'];
 					if ($input == 'none') continue;
@@ -248,10 +246,10 @@ END;
 					echo "<tr valign='top'>";
 					if ($input == 'textarea') {
 						echo "<td colspan='2'>";
-						if ($label) echo "<strong>$label :</strong><br />";
+						if ($label) echo "<strong>$label</strong><br />";
 						echo "<textarea name='$opt' id='$opt' {$this->config[$opt]['input_attributes']}>" . $value . '</textarea>';
 					} else {
-						echo "<th width='50%' scope='row'>$label : </th><td>";
+						echo "<th scope='row'>$label</th><td>";
 						if ($input == "inline_textarea")
 							echo "<textarea name='$opt' id='$opt' {$this->config[$opt]['input_attributes']}>" . $value . '</textarea>';
 						else
@@ -266,14 +264,42 @@ END;
 				}
 		echo <<<END
 			</table>
-			</fieldset>
 			<input type="hidden" name="submitted" value="1" />
-			<div class="submit"><input type="submit" name="Submit" value="Update Options &raquo;" /></div>
+			<div class="submit"><input type="submit" name="Submit" value="Save Changes" /></div>
 		</form>
 			</div>
 END;
+		$logo = get_option('siteurl') . '/wp-content/plugins/' . basename($_GET['page'], '.php') . '/c2c_minilogo.png';
 		echo <<<END
-		<div class='wrap' style="text-align:center; color:#888;">This plugin brought to you by <a href="http://coffee2code.com" title="coffee2code.com">Scott Reilly, aka coffee2code</a>.<br /><span style="font-size:x-small;"><a href="http://coffee2code.com/donate">Did you find this plugin useful?</a></span></div>
+		<style type="text/css">
+			#c2c {
+				text-align:center;
+				color:#888;
+				background-color:#ffffef;
+				padding:5px 0 0;
+				margin-top:12px;
+				border-style:solid;
+				border-color:#dadada;
+				border-width:1px 0;
+			}
+			#c2c div {
+				margin:0 auto;
+				padding:5px 40px 0 0;
+				width:45%;
+				min-height:40px;
+				background:url('$logo') no-repeat top right;
+			}
+			#c2c span {
+				display:block;
+				font-size:x-small;
+			}
+		</style>
+		<div id='c2c' class='wrap'>
+			<div>
+			This plugin brought to you by <a href="http://coffee2code.com" title="coffee2code.com">Scott Reilly, aka coffee2code</a>.
+			<span><a href="http://coffee2code.com/donate" title="Please consider a donation">Did you find this plugin useful?</a></span>
+			</div>
+		</div>
 END;
 		echo <<<END
 		<div class='wrap'>
