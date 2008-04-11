@@ -5,20 +5,35 @@ Version: 2.0
 Plugin URI: http://coffee2code.com/wp-plugins/post-to-post-links
 Author: Scott Reilly
 Author URI: http://coffee2code.com
-Description: Easily create a link to another post using a simple shortcut and using the post's id or slug; the link text is the post's title, unless overridden.
+Description: Easily create a link to another post using a simple shortcut that references the post's id or slug; the link text is the post's title, unless overridden.
 
 When writing your posts, you can refer to other posts either by ID, like so: 
 	[post="20"] or <!--post="20"-->	
 or by the post slug/name, like so:
 	[post="hello-world"] or <!--post="hello-world"-->.
 
-The HTML comment notation was the original syntax employed by earlier versions of this plugin.  While it is still supported, it is no longer the primary and recommended syntax.  Instead, use the square-bracket notation.  However, you can enable legacy tag support by checking the appropriate option on the plugin's admin options page.
+When viewed on your site, the post-to-post link tag is replaced with a permalink to the post you've referenced.
+By default, the text of the link will be the referenced post's title, resulting in something like:
+	<a href="http://example.com/archives/2005/04/01/hello-world/" title="Hello World!">Hello World!</a>
 
-A quicktag button labeled "post link" is created by default, which will automatically insert [post=""] into the post/page
-textarea.  Insert the ID/post slug between the double-quotes.  A visual editor button has also been added which does the same thing
-as well, which also adds the feature of treating highlighted text as the text="" value when the button is pressed.
+You can optionally customize the link text by specifying a <code>text=""</code> value to the post-to-post link tag:
+	Check out [post="hello-world" text="my first post"].
+Yields:
+	Check out <a href="http://example.com/archives/2005/04/01/hello-world/" title="Hello World!">my first post</a>.
 
-The plugin provides its own admin options page via `Options` -> `Post2Post` in the WordPress admin.
+The HTML comment notation was the original syntax employed by earlier versions of this plugin.  While it is still
+supported, it is no longer the primary and recommended syntax.  Instead, use the square-bracket notation.  However,
+you can enable legacy tag support by checking the appropriate option on the plugin's admin options page.
+
+A quicktag button labeled "post link" is created by default, which will automatically insert [post=""] into the
+post/page textarea.  Insert the ID/post slug between the double-quotes.  A visual editor button has also been added
+which does the same thing as well, which also adds the feature of treating highlighted text as the text="" value when
+the button is pressed.
+
+The plugin provides its own admin options page via Options -> Post2Post (or in WP 2.5: Settings -> Post2Post) in the
+WordPress admin.  Here you can define text that you want to appear before and/or after each post-to-post substitution,
+whether to create the post editor quicktag buttons, and if you want to enable legacy tag support.  This admin page also
+provides some documentation.
 
 NOTE: The HTML comment syntax notation does NOT play well with the visual (aka rich-text) editor in the WordPress admin.  
 
@@ -32,7 +47,9 @@ Installation:
 1. Download the file http://coffee2code.com/wp-plugins/post-to-post-links.zip and unzip it into your 
 /wp-content/plugins/ directory.
 2. Activate the plugin through the 'Plugins' admin menu in WordPress
-3. Go to the new Options -> Post2Post admin options page.  Optionally customize the options.
+3. Go to the Options -> Post2Post (or in WP 2.5: Settings -> Post2Post) admin options page.
+Optionally customize the options.
+4. Use the Post-to-Post link syntax in posts to refer to other posts, as needed. (See examples.)
 
 */
 
@@ -324,6 +341,10 @@ END;
 		<li><code>&lt;!-- post = '25' --></code></li>
 		</ul>
 
+		Assuming all of the above were used to reference the same post, the replacement for the post-to-post shortcut would be:
+
+<code>&lt;a href="http://example.com/2008/03/01/the-best-post-ever" title="The Best Post Ever!">The Best Post Ever!&lt;/a></code>
+
 		For any of the above you can also optionally specify a <code>text=""</code> value.  If so defined, that text will be used as the link text as opposed to the referenced post's title.
 
 		<ul>
@@ -332,6 +353,10 @@ END;
 		<li><code>&lt;!--post="25" text="this post"--></li>
 		<li><code>&lt;!--post='hello-world' text='this post'--></li>
 		</ul>
+
+		The first of which would produce:
+
+		<code>&lt;a href="http://example.com/2008/03/01/the-best-post-ever" title="The Best Post Ever!">this post&lt;/a></code>
 		
 		</div>
 END;
@@ -344,15 +369,15 @@ END;
 		$post_id_or_name = $wpdb->escape($matches[2]);
 		$title = $matches[4];
 		if ( empty($post_id_or_name) ) return '';
-//		$field = (is_numeric($post_id_or_name)) ? 'ID' : 'post_name';
 		if ( is_numeric($post_id_or_name) )
 			$post = get_post($post_id_or_name);
 		else
 			$post = $wpdb->get_row("SELECT ID, post_title FROM $wpdb->posts WHERE post_name = '$post_id_or_name' LIMIT 1");
 		if ( empty($post->post_title) ) return '';
+		$post_title = get_the_title($post->ID);
 		return $options['before_text'] .
-			   '<a href="' . get_permalink($post->ID) . '">' .
-			   ($title ? $title : apply_filters('the_title', get_the_title($post->ID))) .
+			   '<a href="' . get_permalink($post->ID) . '" title="' . attribute_escape(strip_tags($post_title)) . '">' .
+			   ($title ? $title : $post_title) .
 			   '</a>' . $options['after_text'];
 	} //end post_to_post_link_handler
 
