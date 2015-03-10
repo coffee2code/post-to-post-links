@@ -1,0 +1,244 @@
+# Translation of the WordPress plugin Easy Post-to-Post Links v4.0 by Scott Reilly.
+# Copyright (C) 2015 Scott Reilly
+# This file is distributed under the same license as the Easy Post-to-Post Links plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Easy Post-to-Post Links 4.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/easy-post-to-"
+"post-links\n"
+"POT-Creation-Date: 2015-03-10 07:25:11+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: c2c-plugin.php:75
+msgid "Invalid file specified for C2C_Plugin: %s"
+msgstr ""
+
+#: c2c-plugin.php:127 c2c-plugin.php:134
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: c2c-plugin.php:322
+msgid "See the \"Help\" link to the top-right of the page for more help."
+msgstr ""
+
+#: c2c-plugin.php:357
+msgid "Settings reset."
+msgstr ""
+
+#: c2c-plugin.php:368 c2c-plugin.php:376
+msgid "A value is required for: \"%s\""
+msgstr ""
+
+#: c2c-plugin.php:385
+msgid "Expected integer value for: %s"
+msgstr ""
+
+#: c2c-plugin.php:502
+msgid "More information about %1$s %2$s"
+msgstr ""
+
+#: c2c-plugin.php:503
+msgid "Click for more help on this plugin"
+msgstr ""
+
+#: c2c-plugin.php:504
+msgid " (especially check out the \"Other Notes\" tab, if present)"
+msgstr ""
+
+#: c2c-plugin.php:620
+msgid "More Help"
+msgstr ""
+
+#: c2c-plugin.php:632
+msgid "Settings"
+msgstr ""
+
+#: c2c-plugin.php:644
+msgid "Donation for coffee2code plugin: %s"
+msgstr ""
+
+#: c2c-plugin.php:645
+msgid "Coffee fuels my coding."
+msgstr ""
+
+#: c2c-plugin.php:914
+msgid "A plugin by coffee2code"
+msgstr ""
+
+#: c2c-plugin.php:923
+msgid "Save Changes"
+msgstr ""
+
+#: c2c-plugin.php:924
+msgid "Reset Settings"
+msgstr ""
+
+#: c2c-plugin.php:930
+msgid "Scott Reilly, aka coffee2code"
+msgstr ""
+
+#: c2c-plugin.php:931
+msgid "This plugin brought to you by %s."
+msgstr ""
+
+#: c2c-plugin.php:932
+msgid "Please consider a donation"
+msgstr ""
+
+#: c2c-plugin.php:933
+msgid "Did you find this plugin useful?"
+msgstr ""
+
+#. #-#-#-#-#  easy-post-to-post-links.pot (Easy Post-to-Post Links 4.0)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: easy-post-to-post-links.php:140
+msgid "Easy Post-to-Post Links"
+msgstr ""
+
+#: easy-post-to-post-links.php:141
+msgid "Post2Post"
+msgstr ""
+
+#: easy-post-to-post-links.php:146
+msgid "Enable post editor button?"
+msgstr ""
+
+#: easy-post-to-post-links.php:147
+msgid "Add button to the post editor toolbar?"
+msgstr ""
+
+#: easy-post-to-post-links.php:149
+msgid "Before link text"
+msgstr ""
+
+#: easy-post-to-post-links.php:150
+msgid "Text to appear before title of a referenced post"
+msgstr ""
+
+#: easy-post-to-post-links.php:152
+msgid "After link text"
+msgstr ""
+
+#: easy-post-to-post-links.php:153
+msgid "Text to appear after title of a referenced post"
+msgstr ""
+
+#: easy-post-to-post-links.php:155
+msgid "Enable legacy HTML comment-style tag support?"
+msgstr ""
+
+#: easy-post-to-post-links.php:156
+msgid ""
+"Enable support for pre-2.0 post-to-post tag syntax of <code>&lt;!--post="
+"\"24\"--></code>?<br />Check this if you have used an older version of this "
+"plugin and thus have the older syntax in existing posts."
+msgstr ""
+
+#: easy-post-to-post-links.php:157
+msgid ""
+"NOTE: This does NOT play well with the Visual (aka rich-text) editor in the "
+"WordPress admin."
+msgstr ""
+
+#: easy-post-to-post-links.php:159
+msgid "Enable legacy pseudo-shortcode tag support?"
+msgstr ""
+
+#: easy-post-to-post-links.php:160
+msgid ""
+"Enable support for pre-3.0 post-to-post tag syntax of <code>[post=\"24\"]</"
+"code>?<br />Check this if you have used an older version of this plugin and "
+"thus have the older syntax in existing posts."
+msgstr ""
+
+#: easy-post-to-post-links.php:196
+msgid "Easy Post-to-Post Settings"
+msgstr ""
+
+#: easy-post-to-post-links.php:198
+msgid ""
+"Easily create a link to another post using a simple shortcut and using the "
+"post's id or slug; the link text is the post's title, unless overridden."
+msgstr ""
+
+#: easy-post-to-post-links.php:199
+msgid ""
+"See the Examples tab of the \"Help\" link to the top-right of the page for "
+"example usage."
+msgstr ""
+
+#: easy-post-to-post-links.php:210 post-to-post-links.php:233
+msgid "Examples"
+msgstr ""
+
+#: easy-post-to-post-links.php:235
+msgid ""
+"These are all valid ways to reference another of your posts on the same blog "
+"using the provided shortcode."
+msgstr ""
+
+#: easy-post-to-post-links.php:245
+msgid ""
+"These only work if you've enabled legacy pseudo-shortcode tag support, which "
+"is not recommended unless you used the plugin back in it's 3.0 days."
+msgstr ""
+
+#: easy-post-to-post-links.php:261
+msgid ""
+"These only work if you've enabled legacy HTML comment-style tag support, "
+"which is not recommended unless you used the plugin back in pre-3.0 days."
+msgstr ""
+
+#: easy-post-to-post-links.php:273
+msgid ""
+"Assuming all of the above were used to reference the same post, the "
+"replacement for the post-to-post shortcut would be:"
+msgstr ""
+
+#: easy-post-to-post-links.php:281
+msgid ""
+"For any of the above you can also optionally specify text to be used as the "
+"link text as opposed to the referenced post's title."
+msgstr ""
+
+#: easy-post-to-post-links.php:288
+msgid "Legacy (pre v3.0)"
+msgstr ""
+
+#: easy-post-to-post-links.php:294
+msgid "Legacy (pre v2.0)"
+msgstr ""
+
+#: easy-post-to-post-links.php:301 post-to-post-links.php:316
+msgid "Which would produce:"
+msgstr ""
+
+#: easy-post-to-post-links.php:309
+msgid ""
+"You can also optionally specify the attribute shortcodes \"before\" and "
+"\"after\" to override the plugin's settings for text to appear before and "
+"after the link, respectively."
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://coffee2code.com/wp-plugins/easy-post-to-post-links/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Easily create a link to another post using a shortcode to reference the post "
+"by id or slug; the link text is the post's title, unless overridden."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Scott Reilly"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://coffee2code.com"
+msgstr ""
