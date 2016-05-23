@@ -8,7 +8,6 @@
  * License:     GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: easy-post-to-post-links
- * Domain Path: /lang/
  * Description: Easily create a link to another post using a shortcode to reference the post by id or slug; the link text is the post's title, unless overridden.
  *
  * Compatible with WordPress 3.6+ through 4.1+.
