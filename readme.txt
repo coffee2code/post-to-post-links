@@ -164,6 +164,17 @@ add_filter( 'c2c_post2post_shortcode', 'change_post2post_shortcde' );
 
 == Changelog ==
 
+= 4.1 () =
+* Change: Update plugin framework to 043:
+    * Fix error message when text replacement field has trailing blank line.
+    * Change class name to c2c_TextReplace_Plugin_043 to be plugin-specific.
+    * Disregard invalid lines supplied as part of hash option value.
+    * Set textdomain using a string instead of a variable.
+    * Don't load textdomain from file.
+    * Change admin page header from 'h2' to 'h1' tag.
+    * Add `c2c_plugin_version()`.
+    * Formatting improvements to inline docs.
+
 = 4.0 (2015-03-09) =
 * Publicly release changes from the not-publicly released v2.0 and v3.0 of the plugin
 * Update plugin framework to 039

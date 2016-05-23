@@ -79,7 +79,11 @@ class Easy_Post_to_Post_Links_Test extends WP_UnitTestCase {
 	}
 
 	function test_plugin_framework_class_name() {
-		$this->assertTrue( class_exists( 'C2C_Plugin_039' ) );
+		$this->assertTrue( class_exists( 'c2c_EasyPostToPostLinks_Plugin_043' ) );
+	}
+
+	function test_plugin_framework_version() {
+		$this->assertEquals( '043', c2c_EasyPostToPostLinks::get_instance()->c2c_plugin_version() );
 	}
 
 	function test_version() {
