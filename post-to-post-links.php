@@ -137,27 +137,27 @@ final class c2c_EasyPostToPostLinks extends c2c_EasyPostToPostLinks_Plugin_043 {
 	 * @since 3.0
 	 */
 	public function load_config() {
-		$this->name      = __( 'Easy Post-to-Post Links', $this->textdomain );
-		$this->menu_name = __( 'Post2Post', $this->textdomain );
+		$this->name      = __( 'Easy Post-to-Post Links', 'easy-post-to-post-links' );
+		$this->menu_name = __( 'Post2Post', 'easy-post-to-post-links' );
 		$this->shortcode = apply_filters( 'c2c_post2post_shortcode', $this->shortcode );
 
 		$this->config = array(
 			'make_quicktag' => array( 'input' => 'checkbox', 'default' => '',
-					'label' => __( 'Enable post editor button?', $this->textdomain ),
-					'help'  => __( 'Add button to the post editor toolbar?', $this->textdomain ) ),
+					'label' => __( 'Enable post editor button?', 'easy-post-to-post-links' ),
+					'help'  => __( 'Add button to the post editor toolbar?', 'easy-post-to-post-links' ) ),
 			'before_text' => array( 'input' => 'text', 'default' => '"',
-					'label' => __( 'Before link text', $this->textdomain ),
-					'help'  => __( 'Text to appear before title of a referenced post', $this->textdomain ) ),
+					'label' => __( 'Before link text', 'easy-post-to-post-links' ),
+					'help'  => __( 'Text to appear before title of a referenced post', 'easy-post-to-post-links' ) ),
 			'after_text' => array( 'input' => 'text', 'default' => '"',
-					'label' => __( 'After link text', $this->textdomain ),
-					'help'  => __( 'Text to appear after title of a referenced post', $this->textdomain ) ),
+					'label' => __( 'After link text', 'easy-post-to-post-links' ),
+					'help'  => __( 'Text to appear after title of a referenced post', 'easy-post-to-post-links' ) ),
 			'enable_legacy' => array( 'input' => 'checkbox', 'default' => false,
-					'label' => __( 'Enable legacy HTML comment-style tag support?', $this->textdomain ),
-					'help'  => __( 'Enable support for pre-2.0 post-to-post tag syntax of <code>&lt;!--post="24"--></code>?<br />Check this if you have used an older version of this plugin and thus have the older syntax in existing posts.', $this->textdomain ) . '<br />' .
-							__( 'NOTE: This does NOT play well with the Visual (aka rich-text) editor in the WordPress admin.', $this->textdomain ) ),
+					'label' => __( 'Enable legacy HTML comment-style tag support?', 'easy-post-to-post-links' ),
+					'help'  => __( 'Enable support for pre-2.0 post-to-post tag syntax of <code>&lt;!--post="24"--></code>?<br />Check this if you have used an older version of this plugin and thus have the older syntax in existing posts.', 'easy-post-to-post-links' ) . '<br />' .
+							__( 'NOTE: This does NOT play well with the Visual (aka rich-text) editor in the WordPress admin.', 'easy-post-to-post-links' ) ),
 			'enable_legacy_v2' => array( 'input' => 'checkbox', 'default' => false,
-					'label' => __( 'Enable legacy pseudo-shortcode tag support?', $this->textdomain ),
-					'help'  => __( 'Enable support for pre-3.0 post-to-post tag syntax of <code>[post="24"]</code>?<br />Check this if you have used an older version of this plugin and thus have the older syntax in existing posts.', $this->textdomain ) )
+					'label' => __( 'Enable legacy pseudo-shortcode tag support?', 'easy-post-to-post-links' ),
+					'help'  => __( 'Enable support for pre-3.0 post-to-post tag syntax of <code>[post="24"]</code>?<br />Check this if you have used an older version of this plugin and thus have the older syntax in existing posts.', 'easy-post-to-post-links' ) )
 		);
 	}
 
@@ -193,10 +193,10 @@ final class c2c_EasyPostToPostLinks extends c2c_EasyPostToPostLinks_Plugin_043 {
 	 */
 	public function options_page_description( $localized_heading_text = '' ) {
 		$options = $this->get_options();
-		parent::options_page_description( __( 'Easy Post-to-Post Settings', $this->textdomain ) );
+		parent::options_page_description( __( 'Easy Post-to-Post Settings', 'easy-post-to-post-links' ) );
 
-		echo '<p>' . __( 'Easily create a link to another post using a simple shortcut and using the post\'s id or slug; the link text is the post\'s title, unless overridden.', $this->textdomain ) . '</p>';
-		echo '<p>' . __( 'See the Examples tab of the "Help" link to the top-right of the page for example usage.', $this->textdomain ) . '</p>';
+		echo '<p>' . __( 'Easily create a link to another post using a simple shortcut and using the post\'s id or slug; the link text is the post\'s title, unless overridden.', 'easy-post-to-post-links' ) . '</p>';
+		echo '<p>' . __( 'See the Examples tab of the "Help" link to the top-right of the page for example usage.', 'easy-post-to-post-links' ) . '</p>';
 	}
 
 	/**
@@ -207,7 +207,7 @@ final class c2c_EasyPostToPostLinks extends c2c_EasyPostToPostLinks_Plugin_043 {
 	public function help_tabs_content( $screen ) {
 		$screen->add_help_tab( array(
 			'id'      => 'c2c-examples-' . $this->id_base,
-			'title'   => __( 'Examples', $this->textdomain ),
+			'title'   => __( 'Examples', 'easy-post-to-post-links' ),
 			'content' => self::contextual_help( '', $this->options_page )
 		) );
 
@@ -230,9 +230,9 @@ final class c2c_EasyPostToPostLinks extends c2c_EasyPostToPostLinks_Plugin_043 {
 
 		$options = $this->get_options();
 
-		$help = '<h3>' . __( 'Examples', $this->textdomain ) . '</h3>';
+		$help = '<h3>' . __( 'Examples', 'easy-post-to-post-links' ) . '</h3>';
 
-		$help .= '<p>' . __( 'These are all valid ways to reference another of your posts on the same blog using the provided shortcode.', $this->textdomain ) . '</p>';
+		$help .= '<p>' . __( 'These are all valid ways to reference another of your posts on the same blog using the provided shortcode.', 'easy-post-to-post-links' ) . '</p>';
 
 		$help .= "<ul>\n";
 		$help .= '<li><code>[post2post id="25"]</code></li>' . "\n";
@@ -242,7 +242,7 @@ final class c2c_EasyPostToPostLinks extends c2c_EasyPostToPostLinks_Plugin_043 {
 		$help .= "</ul>\n";
 
 		if ( $options['enable_legacy_v2'] ) {
-			$help .= '<p>' . __( 'These only work if you\'ve enabled legacy pseudo-shortcode tag support, which is not recommended unless you used the plugin back in it\'s 3.0 days.', $this->textdomain ) . '</p>';
+			$help .= '<p>' . __( 'These only work if you\'ve enabled legacy pseudo-shortcode tag support, which is not recommended unless you used the plugin back in it\'s 3.0 days.', 'easy-post-to-post-links' ) . '</p>';
 
 			$help .= "<ul>\n";
 			$help .= '<li><code>[post=25]</code></li>' . "\n";
@@ -258,7 +258,7 @@ final class c2c_EasyPostToPostLinks extends c2c_EasyPostToPostLinks_Plugin_043 {
 		}
 
 		if ( $options['enable_legacy'] ) {
-			$help .= '<p>' . __( 'These only work if you\'ve enabled legacy HTML comment-style tag support, which is not recommended unless you used the plugin back in pre-3.0 days.', $this->textdomain ) . '</p>';
+			$help .= '<p>' . __( 'These only work if you\'ve enabled legacy HTML comment-style tag support, which is not recommended unless you used the plugin back in pre-3.0 days.', 'easy-post-to-post-links' ) . '</p>';
 
 			$help .= "<ul>\n";
 			$help .= '<li><code>&lt;!--post=25--></code></li>' . "\n";
@@ -270,7 +270,7 @@ final class c2c_EasyPostToPostLinks extends c2c_EasyPostToPostLinks_Plugin_043 {
 			$help .= "</ul>\n";
 		}
 
-		$help .= '<p>' . __( 'Assuming all of the above were used to reference the same post, the replacement for the post-to-post shortcut would be:', $this->textdomain ) . "</p>\n";
+		$help .= '<p>' . __( 'Assuming all of the above were used to reference the same post, the replacement for the post-to-post shortcut would be:', 'easy-post-to-post-links' ) . "</p>\n";
 
 		$help .= '<p><code>';
 		$help .= $options['before_text'];
@@ -278,27 +278,27 @@ final class c2c_EasyPostToPostLinks extends c2c_EasyPostToPostLinks_Plugin_043 {
 		$help .= $options['after_text'];
 		$help .= '</code></p>' . "\n";
 
-		$help .= '<p>' . __( 'For any of the above you can also optionally specify text to be used as the link text as opposed to the referenced post\'s title.', $this->textdomain ) . "</p>\n";
+		$help .= '<p>' . __( 'For any of the above you can also optionally specify text to be used as the link text as opposed to the referenced post\'s title.', 'easy-post-to-post-links' ) . "</p>\n";
 
 		$help .= "<ul>\n";
 		$help .= '<li><code>[post2post id="25"]this post[/post2post]</code></li>' . "\n";
 		$help .= '<li><code>[post2post id="the-best-post-ever"]this post[/post2post]</code></li>' . "\n";
 
 		if ( $options['enable_legacy_v2'] ) {
-			$help .= '<li><strong>' . __( 'Legacy (pre v3.0)', $this->textdomain ) . "</strong></li>\n";
+			$help .= '<li><strong>' . __( 'Legacy (pre v3.0)', 'easy-post-to-post-links' ) . "</strong></li>\n";
 			$help .= '<li><code>[post="25" text="this post"]</code></li>' . "\n";
 			$help .= '<li><code>[post="blog-anniversary" text="this post"]</code></li>' . "\n";
 		}
 
 		if ( $options['enable_legacy'] ) {
-			$help .= '<li><strong>' . __( 'Legacy (pre v2.0)', $this->textdomain ) . "</strong></li>\n";
+			$help .= '<li><strong>' . __( 'Legacy (pre v2.0)', 'easy-post-to-post-links' ) . "</strong></li>\n";
 			$help .= '<li><code>&lt;!--post="25" text="this post"--></code></li>' . "\n";
 			$help .= "<li><code>&lt;!--post='hello-world' text='this post'--></code></li>\n";
 		}
 
 		$help .= "</ul>\n";
 
-		$help .= '<p>' . __( 'Which would produce:', $this->textdomain ) . "</p>\n";
+		$help .= '<p>' . __( 'Which would produce:', 'easy-post-to-post-links' ) . "</p>\n";
 
 		$help .= '<p><code>';
 		$help .= $options['before_text'];
@@ -306,14 +306,14 @@ final class c2c_EasyPostToPostLinks extends c2c_EasyPostToPostLinks_Plugin_043 {
 		$help .= $options['after_text'];
 		$help .= '</code></p>' . "\n";
 
-		$help .= '<p>' . __( 'You can also optionally specify the attribute shortcodes "before" and "after" to override the plugin\'s settings for text to appear before and after the link, respectively.', $this->textdomain ) . "</p>\n";
+		$help .= '<p>' . __( 'You can also optionally specify the attribute shortcodes "before" and "after" to override the plugin\'s settings for text to appear before and after the link, respectively.', 'easy-post-to-post-links' ) . "</p>\n";
 
 		$help .= "<ul>\n";
 		$help .= '<li><code>[post2post id="25" before="(" after="!)"]this post[/post2post]</code></li>' . "\n";
 		$help .= '<li><code>[post2post id="the-best-post-ever" before="(" after="!)"]this post[/post2post]</code></li>' . "\n";
 		$help .= "</ul>\n";
 
-		$help .= '<p>' . __( 'Which would produce:', $this->textdomain ) . "</p>\n";
+		$help .= '<p>' . __( 'Which would produce:', 'easy-post-to-post-links' ) . "</p>\n";
 
 		$help .= '<p><code>';
 		$help .= '(';

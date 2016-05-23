@@ -174,6 +174,8 @@ add_filter( 'c2c_post2post_shortcode', 'change_post2post_shortcde' );
     * Change admin page header from 'h2' to 'h1' tag.
     * Add `c2c_plugin_version()`.
     * Formatting improvements to inline docs.
+* Change: Add support for language packs:
+    * Set textdomain using a string instead of a variable.
 
 = 4.0 (2015-03-09) =
 * Publicly release changes from the not-publicly released v2.0 and v3.0 of the plugin
