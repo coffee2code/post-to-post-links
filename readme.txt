@@ -181,6 +181,7 @@ add_filter( 'c2c_post2post_shortcode', 'change_post2post_shortcde' );
 * Change: Prevent web invocation of unit test bootstrap.php.
 * Change: Note compatibility through WP 4.5+.
 * Change: Dropped compatibility with version of WP older than 4.1.
+* Change: Update copyright date (2016).
 
 = 4.0 (2015-03-09) =
 * Publicly release changes from the not-publicly released v2.0 and v3.0 of the plugin
