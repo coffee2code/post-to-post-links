@@ -4,8 +4,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: post, posts, pages, links, shortcode, shortcut, coffee2code
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Requires at least: 3.6
-Tested up to: 4.1
+Requires at least: 4.1
+Tested up to: 4.5
 Stable tag: 4.0
 
 Easily create a link to another post using a shortcode to reference the post by id or slug; the link text is the post's title, unless overridden.
@@ -178,6 +178,8 @@ add_filter( 'c2c_post2post_shortcode', 'change_post2post_shortcde' );
     * Set textdomain using a string instead of a variable.
     * Remove .pot file and /lang subdirectory.
     * Remove 'Domain Path' from plugin header.
+* Change: Note compatibility through WP 4.5+.
+* Change: Dropped compatibility with version of WP older than 4.1.
 
 = 4.0 (2015-03-09) =
 * Publicly release changes from the not-publicly released v2.0 and v3.0 of the plugin

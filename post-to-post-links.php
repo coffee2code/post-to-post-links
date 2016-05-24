@@ -10,7 +10,7 @@
  * Text Domain: easy-post-to-post-links
  * Description: Easily create a link to another post using a shortcode to reference the post by id or slug; the link text is the post's title, unless overridden.
  *
- * Compatible with WordPress 3.6+ through 4.1+.
+ * Compatible with WordPress 4.1+ through 4.5+.
  *
  * =>> Read the accompanying readme.txt file for instructions and documentation.
  * =>> Also, visit the plugin's homepage for additional information and updates.
