@@ -180,6 +180,7 @@ add_filter( 'c2c_post2post_shortcode', 'change_post2post_shortcde' );
     * Remove 'Domain Path' from plugin header.
 * Change: Prevent web invocation of unit test bootstrap.php.
 * New: Add LICENSE file.
+* New: Add empty index.php to prevent files from being listed if web server has enabled directory listings.
 * Change: Note compatibility through WP 4.5+.
 * Change: Dropped compatibility with version of WP older than 4.1.
 * Change: Update copyright date (2016).
