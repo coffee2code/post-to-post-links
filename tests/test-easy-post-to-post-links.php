@@ -4,13 +4,13 @@ defined( 'ABSPATH' ) or die();
 
 class Easy_Post_to_Post_Links_Test extends WP_UnitTestCase {
 
-	function setUp() {
+	public function setUp() {
 		parent::setUp();
 		$this->set_option();
 
 	}
 
-	function tearDown() {
+	public function tearDown() {
 		parent::tearDown();
 
 		remove_shortcode( 'p2p' );
@@ -19,21 +19,18 @@ class Easy_Post_to_Post_Links_Test extends WP_UnitTestCase {
 	}
 
 
-
-	/*
-	 *
-	 * DATA PROVIDERS
-	 *
-	 */
-
+	//
+	//
+	// DATA PROVIDERS
+	//
+	//
 
 
-	/*
-	 *
-	 * HELPER FUNCTIONS
-	 *
-	 */
-
+	//
+	//
+	// HELPER FUNCTIONS
+	//
+	//
 
 
 	private function set_option( $settings = array() ) {
@@ -69,30 +66,30 @@ class Easy_Post_to_Post_Links_Test extends WP_UnitTestCase {
 	}
 
 
-	/*
-	 *
-	 * TESTS
-	 *
-	 */
+	//
+	//
+	// TESTS
+	//
+	//
 
 
-	function test_class_exists() {
+	public function test_class_exists() {
 		$this->assertTrue( class_exists( 'c2c_EasyPostToPostLinks' ) );
 	}
 
-	function test_plugin_framework_class_name() {
+	public function test_plugin_framework_class_name() {
 		$this->assertTrue( class_exists( 'c2c_EasyPostToPostLinks_Plugin_043' ) );
 	}
 
-	function test_plugin_framework_version() {
+	public function test_plugin_framework_version() {
 		$this->assertEquals( '043', c2c_EasyPostToPostLinks::get_instance()->c2c_plugin_version() );
 	}
 
-	function test_version() {
+	public function test_version() {
 		$this->assertEquals( '4.0', c2c_EasyPostToPostLinks::get_instance()->version() );
 	}
 
-	function test_instance_object_is_returned() {
+	public function test_instance_object_is_returned() {
 		$this->assertTrue( is_a( c2c_EasyPostToPostLinks::get_instance(), 'c2c_EasyPostToPostLinks' ) );
 	}
 
@@ -100,35 +97,35 @@ class Easy_Post_to_Post_Links_Test extends WP_UnitTestCase {
 	 * Test shortcode
 	 */
 
-	function test_shortcode_with_valid_id() {
+	public function test_shortcode_with_valid_id() {
 		$post_id = $this->factory->post->create( array( 'post_title' => 'Sample post' ) );
 
 		$this->assertEquals( $this->get_link( $post_id ), do_shortcode( '[post2post id="' . $post_id . '"]' ) );
 	}
 
-	function test_shortcode_with_valid_slug() {
+	public function test_shortcode_with_valid_slug() {
 		$post_id = $this->factory->post->create( array( 'post_title' => 'Sample post' ) );
 
 		$this->assertEquals( $this->get_link( $post_id ), do_shortcode( '[post2post id="sample-post"]' ) );
 	}
 
-	function test_shortcode_with_empty_id() {
+	public function test_shortcode_with_empty_id() {
 		$this->assertEmpty( do_shortcode( '[post2post id=""]' ) );
 	}
 
-	function test_shortcode_with_invalid_id() {
+	public function test_shortcode_with_invalid_id() {
 		$this->assertEmpty( do_shortcode( '[post2post id="555"]' ) );
 	}
 
-	function test_shortcode_with_invalid_non_int_id() {
+	public function test_shortcode_with_invalid_non_int_id() {
 		$this->assertEmpty( do_shortcode( '[post2post id="cat"]' ) );
 	}
 
-	function test_shortcode_with_invalid_no_id() {
+	public function test_shortcode_with_invalid_no_id() {
 		$this->assertEmpty( do_shortcode( '[post2post cat="555"]' ) );
 	}
 
-	function test_shortcode_with_before_text_and_after_text() {
+	public function test_shortcode_with_before_text_and_after_text() {
 		$post_id = $this->factory->post->create( array( 'post_title' => 'Sample post' ) );
 
 		$this->assertEquals(
@@ -137,7 +134,7 @@ class Easy_Post_to_Post_Links_Test extends WP_UnitTestCase {
 		);
 	}
 
-	function test_shortcode_with_before_text_and_after_text_both_a_space() {
+	public function test_shortcode_with_before_text_and_after_text_both_a_space() {
 		$post_id = $this->factory->post->create( array( 'post_title' => 'Sample post' ) );
 
 		$this->assertEquals(
@@ -146,7 +143,7 @@ class Easy_Post_to_Post_Links_Test extends WP_UnitTestCase {
 		);
 	}
 
-	function test_shortcode_with_content() {
+	public function test_shortcode_with_content() {
 		$post_id = $this->factory->post->create( array( 'post_title' => 'Sample post' ) );
 
 		$this->assertEquals(
@@ -155,7 +152,7 @@ class Easy_Post_to_Post_Links_Test extends WP_UnitTestCase {
 		);
 	}
 
-	function test_shortcode_with_blank_settings_before_text_and_after_text() {
+	public function test_shortcode_with_blank_settings_before_text_and_after_text() {
 		$this->set_option( array(
 			'before_text' => '',
 			'after_text'  => '',
@@ -168,7 +165,7 @@ class Easy_Post_to_Post_Links_Test extends WP_UnitTestCase {
 		);
 	}
 
-	function test_filter_c2c_post2post_shortcode() {
+	public function test_filter_c2c_post2post_shortcode() {
 		add_filter( 'c2c_post2post_shortcode', array( $this, 'change_post2post_shortcde' ) );
 		// Since unit tests don't facilitate hooking init just for a single test, manually
 		// fire off the plugin's action that would normally fire and asusme the filter being
@@ -187,7 +184,7 @@ class Easy_Post_to_Post_Links_Test extends WP_UnitTestCase {
 
 	// TODO: Test filters are hooked when legacy enabled.
 
-	function test_legacy_with_valid_id_not_recognized_if_not_enabled() {
+	public function test_legacy_with_valid_id_not_recognized_if_not_enabled() {
 		$post_id = $this->factory->post->create( array( 'post_title' => 'Sample post' ) );
 
 		$this->assertEquals(
@@ -196,7 +193,7 @@ class Easy_Post_to_Post_Links_Test extends WP_UnitTestCase {
 		);
 	}
 
-	function test_legacy_with_valid_id() {
+	public function test_legacy_with_valid_id() {
 		$this->set_option( array( 'enable_legacy' => true ) );
 		$post_id = $this->factory->post->create( array( 'post_title' => 'Sample post' ) );
 
@@ -206,7 +203,7 @@ class Easy_Post_to_Post_Links_Test extends WP_UnitTestCase {
 		);
 	}
 
-	function test_legacy_with_valid_id_and_spaces() {
+	public function test_legacy_with_valid_id_and_spaces() {
 		$this->set_option( array( 'enable_legacy' => true ) );
 		$post_id = $this->factory->post->create( array( 'post_title' => 'Sample post' ) );
 
@@ -216,7 +213,7 @@ class Easy_Post_to_Post_Links_Test extends WP_UnitTestCase {
 		);
 	}
 
-	function test_legacy_with_valid_slug() {
+	public function test_legacy_with_valid_slug() {
 		$this->set_option( array( 'enable_legacy' => true ) );
 		$post_id = $this->factory->post->create( array( 'post_title' => 'Sample post' ) );
 
@@ -226,7 +223,7 @@ class Easy_Post_to_Post_Links_Test extends WP_UnitTestCase {
 		);
 	}
 
-	function test_legacy_with_valid_id_and_text() {
+	public function test_legacy_with_valid_id_and_text() {
 		$this->set_option( array( 'enable_legacy' => true ) );
 		$post_id = $this->factory->post->create( array( 'post_title' => 'Sample post' ) );
 
@@ -236,7 +233,7 @@ class Easy_Post_to_Post_Links_Test extends WP_UnitTestCase {
 		);
 	}
 
-	function test_legacy_with_empty_id() {
+	public function test_legacy_with_empty_id() {
 		$this->set_option( array( 'enable_legacy' => true ) );
 
 		$this->assertEquals(
@@ -245,7 +242,7 @@ class Easy_Post_to_Post_Links_Test extends WP_UnitTestCase {
 		);
 	}
 
-	function test_legacy_with_invalid_id() {
+	public function test_legacy_with_invalid_id() {
 		$this->set_option( array( 'enable_legacy' => true ) );
 
 		$this->assertEmpty(
@@ -253,7 +250,7 @@ class Easy_Post_to_Post_Links_Test extends WP_UnitTestCase {
 		);
 	}
 
-	function test_legacy_with_invalid_non_int_id() {
+	public function test_legacy_with_invalid_non_int_id() {
 		$this->set_option( array( 'enable_legacy' => true ) );
 
 		$this->assertEmpty(
@@ -262,7 +259,7 @@ class Easy_Post_to_Post_Links_Test extends WP_UnitTestCase {
 	}
 
 
-	function test_uninstall_deletes_option() {
+	public function test_uninstall_deletes_option() {
 		$option = 'c2c_easy_post_to_post_links';
 		c2c_EasyPostToPostLinks::get_instance()->get_options();
 
