@@ -178,6 +178,7 @@ add_filter( 'c2c_post2post_shortcode', 'change_post2post_shortcde' );
     * Set textdomain using a string instead of a variable.
     * Remove .pot file and /lang subdirectory.
     * Remove 'Domain Path' from plugin header.
+* Change: Prevent direct loading of test file.
 * Change: Prevent web invocation of unit test bootstrap.php.
 * New: Add LICENSE file.
 * New: Add empty index.php to prevent files from being listed if web server has enabled directory listings.

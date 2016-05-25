@@ -1,5 +1,7 @@
 <?php
 
+defined( 'ABSPATH' ) or die();
+
 class Easy_Post_to_Post_Links_Test extends WP_UnitTestCase {
 
 	function setUp() {
