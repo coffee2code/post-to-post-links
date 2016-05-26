@@ -403,7 +403,7 @@ HTML;
 		$before  = ( isset( $matches['before'] ) && $matches['before'] ) ? $matches['before'] : $options['before_text'];
 		$after   = ( isset( $matches['after'] ) && $matches['after'] ) ? $matches['after'] : $options['after_text'];
 
-		if ( empty( $post_id_or_name ) ) {
+		if ( ! $post_id_or_name ) {
 			return '';
 		}
 
