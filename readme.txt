@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.1
 Tested up to: 4.5
-Stable tag: 4.0
+Stable tag: 4.1
 
 Easily create a link to another post using a shortcode to reference the post by id or slug; the link text is the post's title, unless overridden.
 
@@ -164,7 +164,7 @@ add_filter( 'c2c_post2post_shortcode', 'change_post2post_shortcde' );
 
 == Changelog ==
 
-= 4.1 () =
+= 4.1 (2016-05-26) =
 * Change: Update plugin framework to 043:
     * Fix error message when text replacement field has trailing blank line.
     * Change class name to c2c_TextReplace_Plugin_043 to be plugin-specific.
@@ -289,6 +289,9 @@ add_filter( 'c2c_post2post_shortcode', 'change_post2post_shortcde' );
 
 
 == Upgrade Notice ==
+
+= 4.1 =
+Recommended update: improved support for localization; updated plugin framework to 043; verified compatibility through WP 4.5; dropped compatibility with WP older than 4.1; updated copyright date (2016)
 
 = 4.0 =
 Recommended major update: added new shortcode attributes 'before' and 'after'; lots of internal improvements; added unit tests; updated plugin framework; compatibility now WP 3.6-4.1+

@@ -86,7 +86,7 @@ class Easy_Post_to_Post_Links_Test extends WP_UnitTestCase {
 	}
 
 	public function test_version() {
-		$this->assertEquals( '4.0', c2c_EasyPostToPostLinks::get_instance()->version() );
+		$this->assertEquals( '4.1', c2c_EasyPostToPostLinks::get_instance()->version() );
 	}
 
 	public function test_instance_object_is_returned() {
