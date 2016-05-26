@@ -418,10 +418,15 @@ HTML;
 		}
 
 		$post_title = get_the_title( $post );
-		return $before .
-			   '<a href="' . get_permalink( $post ) . '" title="' . esc_attr( strip_tags( $post_title ) ) . '">' .
-			   ( $title ? $title : $post_title ) .
-			   '</a>' . $after;
+
+		return sprintf(
+			'%s<a href="%s" title="%s">%s</a>%s',
+			$before,
+			get_permalink( $post ),
+			esc_attr( strip_tags( $post_title ) ),
+			( $title ? $title : $post_title ),
+			$after
+		);
 	}
 
 	/**
