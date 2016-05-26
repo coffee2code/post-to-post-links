@@ -141,22 +141,37 @@ final class c2c_EasyPostToPostLinks extends c2c_EasyPostToPostLinks_Plugin_043 {
 		$this->shortcode = apply_filters( 'c2c_post2post_shortcode', $this->shortcode );
 
 		$this->config = array(
-			'make_quicktag' => array( 'input' => 'checkbox', 'default' => '',
-					'label' => __( 'Enable post editor button?', 'easy-post-to-post-links' ),
-					'help'  => __( 'Add button to the post editor toolbar?', 'easy-post-to-post-links' ) ),
-			'before_text' => array( 'input' => 'text', 'default' => '"',
-					'label' => __( 'Before link text', 'easy-post-to-post-links' ),
-					'help'  => __( 'Text to appear before title of a referenced post', 'easy-post-to-post-links' ) ),
-			'after_text' => array( 'input' => 'text', 'default' => '"',
-					'label' => __( 'After link text', 'easy-post-to-post-links' ),
-					'help'  => __( 'Text to appear after title of a referenced post', 'easy-post-to-post-links' ) ),
-			'enable_legacy' => array( 'input' => 'checkbox', 'default' => false,
-					'label' => __( 'Enable legacy HTML comment-style tag support?', 'easy-post-to-post-links' ),
-					'help'  => __( 'Enable support for pre-2.0 post-to-post tag syntax of <code>&lt;!--post="24"--></code>?<br />Check this if you have used an older version of this plugin and thus have the older syntax in existing posts.', 'easy-post-to-post-links' ) . '<br />' .
-							__( 'NOTE: This does NOT play well with the Visual (aka rich-text) editor in the WordPress admin.', 'easy-post-to-post-links' ) ),
-			'enable_legacy_v2' => array( 'input' => 'checkbox', 'default' => false,
-					'label' => __( 'Enable legacy pseudo-shortcode tag support?', 'easy-post-to-post-links' ),
-					'help'  => __( 'Enable support for pre-3.0 post-to-post tag syntax of <code>[post="24"]</code>?<br />Check this if you have used an older version of this plugin and thus have the older syntax in existing posts.', 'easy-post-to-post-links' ) )
+			'make_quicktag' => array(
+				'input'   => 'checkbox',
+				'default' => '',
+				'label'   => __( 'Enable post editor button?', 'easy-post-to-post-links' ),
+				'help'    => __( 'Add button to the post editor toolbar?', 'easy-post-to-post-links' ),
+			),
+			'before_text' => array(
+				'input'   => 'text',
+				'default' => '"',
+				'label'   => __( 'Before link text', 'easy-post-to-post-links' ),
+				'help'    => __( 'Text to appear before title of a referenced post', 'easy-post-to-post-links' ),
+			),
+			'after_text' => array(
+				'input'   => 'text',
+				'default' => '"',
+				'label'   => __( 'After link text', 'easy-post-to-post-links' ),
+				'help'    => __( 'Text to appear after title of a referenced post', 'easy-post-to-post-links' ),
+			),
+			'enable_legacy' => array(
+				'input'   => 'checkbox',
+				'default' => false,
+				'label'   => __( 'Enable legacy HTML comment-style tag support?', 'easy-post-to-post-links' ),
+				'help'    => __( 'Enable support for pre-2.0 post-to-post tag syntax of <code>&lt;!--post="24"--></code>?<br />Check this if you have used an older version of this plugin and thus have the older syntax in existing posts.', 'easy-post-to-post-links' ) . '<br />' .
+							__( 'NOTE: This does NOT play well with the Visual (aka rich-text) editor in the WordPress admin.', 'easy-post-to-post-links' ),
+			),
+			'enable_legacy_v2' => array(
+				'input'   => 'checkbox',
+				'default' => false,
+				'label'   => __( 'Enable legacy pseudo-shortcode tag support?', 'easy-post-to-post-links' ),
+				'help'    => __( 'Enable support for pre-3.0 post-to-post tag syntax of <code>[post="24"]</code>?<br />Check this if you have used an older version of this plugin and thus have the older syntax in existing posts.', 'easy-post-to-post-links' ),
+			),
 		);
 	}
 
