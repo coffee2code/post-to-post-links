@@ -165,6 +165,9 @@ add_filter( 'c2c_post2post_shortcode', 'change_post2post_shortcde' );
 == Changelog ==
 
 = () =
+* Change: Unit tests:
+    * Default `WP_TESTS_DIR` to `/tmp/wordpress-tests-lib` in bootstrap rather than erroring out if not defined via environment variable
+    * Enable more error output for unit tests
 * Change: Add GitHub link to readme
 * Change: Modify formatting of hook name in readme to prevent being uppercased when shown in the Plugin Directory
 * Change: Note compatibility through WP 4.9+
