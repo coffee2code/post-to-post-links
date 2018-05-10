@@ -138,7 +138,7 @@ Examples of old legacy syntax follow. Those that use the pseudo-shortcode syntax
 
 The plugin exposes one filter for hooking. Typically, customizations utilizing this hook would be put into your active theme's functions.php file, or used by another plugin.
 
-= c2c_post2post_shortcode (filter) =
+**c2c_post2post_shortcode (filter)**
 
 The 'c2c_post2post_shortcode' hook allows you to define an alternative to the default shortcode tag. By default the shortcode tag name used is 'post2post'. It is recommended you only utilize this filter before making use of the plugin's shortcode in posts and pages. If you change the shortcode tag name, then any existing shortcodes using an older name will no longer work (unless you employ further coding efforts).
 
@@ -166,6 +166,7 @@ add_filter( 'c2c_post2post_shortcode', 'change_post2post_shortcde' );
 
 = () =
 * Change: Add GitHub link to readme
+* Change: Modify formatting of hook name in readme to prevent being uppercased when shown in the Plugin Directory
 * Change: Note compatibility through WP 4.9+
 * Change: Drop compatibility with versions of WP older than 4.7
 * Change: Update copyright date (2018)
