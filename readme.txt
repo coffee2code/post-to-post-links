@@ -37,7 +37,7 @@ Which yields:
 
 The plugin provides its own admin options page via `Settings` -> `Post2Post` in the WordPress admin. Here you can define text that you want to appear before and/or after each post-to-post substitution, and if you want to enable legacy tag support. The plugin's admin page also provides some documentation.
 
-Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/easy-post-to-post-links/) | [Plugin Directory Page](https://wordpress.org/plugins/easy-post-to-post-links/) | [Author Homepage](http://coffee2code.com)
+Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/post-to-post-links/) | [Plugin Directory Page](https://wordpress.org/plugins/easy-post-to-post-links/) | [GitHub](https://github.com/coffee2code/post-to-post-links/) | [Author Homepage](http://coffee2code.com)
 
 
 == Installation ==
@@ -165,6 +165,7 @@ add_filter( 'c2c_post2post_shortcode', 'change_post2post_shortcde' );
 == Changelog ==
 
 = () =
+* Change: Add GitHub link to readme
 * Change: Note compatibility through WP 4.9+
 * Change: Drop compatibility with versions of WP older than 4.7
 * Change: Update copyright date (2018)
