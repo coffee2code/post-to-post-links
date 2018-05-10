@@ -164,6 +164,9 @@ add_filter( 'c2c_post2post_shortcode', 'change_post2post_shortcde' );
 
 == Changelog ==
 
+= () =
+* Change: Update copyright date (2018)
+
 = 4.1 (2016-05-26) =
 * Change: Update plugin framework to 043:
     * Fix error message when text replacement field has trailing blank line.
