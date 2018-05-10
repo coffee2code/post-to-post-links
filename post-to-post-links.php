@@ -54,6 +54,15 @@ require_once( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'c2c-plugin.php' );
 final class c2c_EasyPostToPostLinks extends c2c_EasyPostToPostLinks_Plugin_043 {
 
 	/**
+	 * Name of plugin's setting.
+	 *
+	 * @since 4.2
+	 *
+	 * @var string
+	 */
+	const SETTING_NAME = 'c2c_easy_post_to_post_links';
+
+	/**
 	 * The one true instance.
 	 *
 	 * @var c2c_EasyPostToPostLinks
@@ -127,7 +136,7 @@ final class c2c_EasyPostToPostLinks extends c2c_EasyPostToPostLinks_Plugin_043 {
 	 * @since 3.0
 	 */
 	public static function uninstall() {
-		delete_option( 'c2c_easy_post_to_post_links' );
+		delete_option( self::SETTING_NAME );
 	}
 
 	/**

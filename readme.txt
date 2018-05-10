@@ -165,6 +165,7 @@ add_filter( 'c2c_post2post_shortcode', 'change_post2post_shortcde' );
 == Changelog ==
 
 = () =
+* Change: Store setting name in constant
 * Change: Unit tests:
     * Default `WP_TESTS_DIR` to `/tmp/wordpress-tests-lib` in bootstrap rather than erroring out if not defined via environment variable
     * Enable more error output for unit tests
