@@ -4,14 +4,19 @@ defined( 'ABSPATH' ) or die();
 
 class Easy_Post_to_Post_Links_Test extends WP_UnitTestCase {
 
+	public static function setUpBeforeClass() {
+		c2c_EasyPostToPostLinks::get_instance()->install();
+	}
+
 	public function setUp() {
 		parent::setUp();
-		$this->set_option();
-
 	}
 
 	public function tearDown() {
 		parent::tearDown();
+
+		// Reset options
+		c2c_EasyPostToPostLinks::get_instance()->reset_options();
 
 		remove_shortcode( 'p2p' );
 
