@@ -188,6 +188,7 @@ add_filter( 'c2c_post2post_shortcode', 'change_post2post_shortcde' );
     * 042:
     * Update `disable_update_check()` to check for HTTP and HTTPS for plugin update check API URL
     * Translate "Donate" in footer message
+* New: Add README.md
 * Change: Store setting name in constant
 * Change: Unit tests:
     * Improve option handling and option-related unit tests
