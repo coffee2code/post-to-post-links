@@ -42,7 +42,7 @@ Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/post-to-post-links/) 
 
 == Installation ==
 
-1. Unzip `easy-post-to-post-links.zip` inside the `/wp-content/plugins/` directory (or install via the built-in WordPress plugin installer)
+1. Install via the built-in WordPress plugin installer. Or download and unzip `easy-post-to-post-links.zip` inside the plugins directory for your site (typically `wp-content/plugins/`)
 1. Activate the plugin through the 'Plugins' admin menu in WordPress
 1. Go to the `Settings` -> `Post2Post` admin options page. Optionally customize the settings.
 1. Use the Post-to-Post link syntax in posts to refer to other posts, as needed. (See examples.)
@@ -199,6 +199,7 @@ add_filter( 'c2c_post2post_shortcode', 'change_post2post_shortcde' );
 * Change: Note compatibility through WP 4.9+
 * Change: Drop compatibility with versions of WP older than 4.7
 * Change: Update copyright date (2018)
+* Change: Update installation instruction to prefer built-in installer over .zip file
 
 = 4.1 (2016-05-26) =
 * Change: Update plugin framework to 043:
