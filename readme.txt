@@ -190,7 +190,7 @@ add_filter( 'c2c_post2post_shortcode', 'change_post2post_shortcde' );
     * Translate "Donate" in footer message
 * Change: Store setting name in constant
 * Change: Unit tests:
-    * Improve option handling
+    * Improve option handling and option-related unit tests
     * Default `WP_TESTS_DIR` to `/tmp/wordpress-tests-lib` in bootstrap rather than erroring out if not defined via environment variable
     * Enable more error output for unit tests
 * Change: Add GitHub link to readme
