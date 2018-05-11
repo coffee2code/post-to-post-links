@@ -1,4 +1,4 @@
-=== Easy Post-to-Post Links ===
+=== Post-to-Post Links ===
 Contributors: coffee2code
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6ARCFJ9TX3522
 Tags: post, posts, pages, links, shortcode, shortcut, coffee2code
@@ -165,6 +165,7 @@ add_filter( 'c2c_post2post_shortcode', 'change_post2post_shortcde' );
 == Changelog ==
 
 = () =
+* Change: Drop "Easy" from the name (as an unnecessary word and not that the plugin is any less "easy")
 * Change: Update plugin framework to 047
     * 047:
     * Don't save default setting values to database on install

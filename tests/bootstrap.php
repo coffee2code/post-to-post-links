@@ -2,7 +2,7 @@
 /**
  * PHPUnit bootstrap file
  *
- * @package Easy_Post_to_Post_Links
+ * @package Post_to_Post_Links
  */
 
 ini_set( 'display_errors', 'on' );

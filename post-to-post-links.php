@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Easy Post-to-Post Links
+ * Plugin Name: Post-to-Post Links
  * Version:     4.1
  * Plugin URI:  http://coffee2code.com/wp-plugins/easy-post-to-post-links/
  * Author:      Scott Reilly
@@ -16,7 +16,7 @@
  * =>> Also, visit the plugin's homepage for additional information and updates.
  * =>> Or visit: https://wordpress.org/plugins/easy-post-to-post-links/
  *
- * @package Easy_Post_to_Post_Links
+ * @package Post_to_Post_Links
  * @author  Scott Reilly
  * @version 4.1
  */
@@ -145,7 +145,7 @@ final class c2c_EasyPostToPostLinks extends c2c_EasyPostToPostLinks_Plugin_047 {
 	 * @since 3.0
 	 */
 	public function load_config() {
-		$this->name      = __( 'Easy Post-to-Post Links', 'easy-post-to-post-links' );
+		$this->name      = __( 'Post-to-Post Links', 'easy-post-to-post-links' );
 		$this->menu_name = __( 'Post2Post', 'easy-post-to-post-links' );
 		$this->shortcode = apply_filters( 'c2c_post2post_shortcode', $this->shortcode );
 
@@ -216,7 +216,7 @@ final class c2c_EasyPostToPostLinks extends c2c_EasyPostToPostLinks_Plugin_047 {
 	 */
 	public function options_page_description( $localized_heading_text = '' ) {
 		$options = $this->get_options();
-		parent::options_page_description( __( 'Easy Post-to-Post Settings', 'easy-post-to-post-links' ) );
+		parent::options_page_description( __( 'Post-to-Post Settings', 'easy-post-to-post-links' ) );
 
 		echo '<p>' . __( 'Easily create a link to another post using a simple shortcut and using the post\'s id or slug; the link text is the post\'s title, unless overridden.', 'easy-post-to-post-links' ) . '</p>';
 		echo '<p>' . __( 'See the Examples tab of the "Help" link to the top-right of the page for example usage.', 'easy-post-to-post-links' ) . '</p>';
