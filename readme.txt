@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.7
 Tested up to: 4.9
-Stable tag: 4.1
+Stable tag: 4.2
 
 Easily create a link to another post using a shortcode to reference the post by id or slug; the link text is the post's title, unless overridden.
 
@@ -164,7 +164,13 @@ add_filter( 'c2c_post2post_shortcode', 'change_post2post_shortcde' );
 
 == Changelog ==
 
-= () =
+= 4.2 (2018-05-10) =
+Highlights:
+
+* This release consists of minor behind-the-scenes changes.
+
+Details:
+
 * Change: Drop "Easy" from the name (as an unnecessary word and not that the plugin is any less "easy")
 * Change: Update plugin framework to 047
     * 047:
@@ -327,6 +333,9 @@ add_filter( 'c2c_post2post_shortcode', 'change_post2post_shortcde' );
 
 
 == Upgrade Notice ==
+
+= 4.2 =
+Minor update: updated plugin framework to version 047; compatibility is now with WP 4.7-4.9+; updated copyright date (2018).
 
 = 4.1 =
 Recommended update: improved support for localization; updated plugin framework to 043; verified compatibility through WP 4.5; dropped compatibility with WP older than 4.1; updated copyright date (2016)

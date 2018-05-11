@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Post-to-Post Links
- * Version:     4.1
+ * Version:     4.2
  * Plugin URI:  http://coffee2code.com/wp-plugins/easy-post-to-post-links/
  * Author:      Scott Reilly
  * Author URI:  http://coffee2code.com
@@ -18,7 +18,7 @@
  *
  * @package Post_to_Post_Links
  * @author  Scott Reilly
- * @version 4.1
+ * @version 4.2
  */
 
 /*
@@ -95,7 +95,7 @@ final class c2c_EasyPostToPostLinks extends c2c_EasyPostToPostLinks_Plugin_047 {
 	 * Constructor.
 	 */
 	protected function __construct() {
-		parent::__construct( '4.1', 'easy-post-to-post-links', 'c2c', __FILE__, array() );
+		parent::__construct( '4.2', 'easy-post-to-post-links', 'c2c', __FILE__, array() );
 		register_activation_hook( __FILE__, array( __CLASS__, 'activation' ) );
 
 		return self::$instance = $this;
